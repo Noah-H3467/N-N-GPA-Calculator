@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">    
+    <title>Main Page</title>
+  </head>
+  <body>
+    <h1>Welcome to the N+N GPA Calculator!</h1>
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+            <button onclick="appendToDisplay('3.1415926535')">PI</button>
+            <button onclick="appendToDisplay('2.718281828459045')">e</button>
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="grader('A+', 12, 4.0)">A+</button>
+            <button onclick="appendToDisplay('8')">A</button>
+            <button onclick="appendToDisplay('9')">A-</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('4')">B+</button>
+            <button onclick="appendToDisplay('5')">B</button>
+            <button onclick="appendToDisplay('6')">B-</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+            <button onclick="appendToDisplay('1')">C+</button>
+            <button onclick="appendToDisplay('2')">C</button>
+            <button onclick="appendToDisplay('3')">C-</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendToDisplay('0')">D+</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+
+        </div>
+    </div>
+
+    <div>
+        <p>
+            This text will contain the feedback for the user
+        </p>
+    </div>
+
+    <div>
+        <h3>
+            This section will become visible once calculate GPA is pressed. It will display the GPAs.
+        </h3>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
