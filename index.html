@@ -12,25 +12,28 @@
     <div id="calculator">
         <input id="display" readonly>
         <div id="keys">
-            <button onclick="clearDisplay()" class="operator-btn">C</button>
-            <button onclick="appendToDisplay('3.1415926535')">PI</button>
-            <button onclick="appendToDisplay('2.718281828459045')">e</button>
-            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="restart()" class="operator-btn">Restart</button>
+            <button onclick="crediter(0.5)" class="credit-btn">0.5 Credits</button>
+            <button onclick="crediter(1)" class="credit-btn">1 Credit</button>
+            <button onclick="crediter(2)" class="credit-btn">2 Credits</button>
+            <button onclick="weighter('Normal')" class = "weight-btn">Regular</button>
+            <button onclick="weighter('Honors')" class="weight-btn">Honors</button>
+            <button onclick="weighter('AP')" class="weight-btn">AP</button>
             <button onclick="grader('A+', 12, 4.0)">A+</button>
-            <button onclick="appendToDisplay('8')">A</button>
-            <button onclick="appendToDisplay('9')">A-</button>
-            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
-            <button onclick="appendToDisplay('4')">B+</button>
-            <button onclick="appendToDisplay('5')">B</button>
-            <button onclick="appendToDisplay('6')">B-</button>
-            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
-            <button onclick="appendToDisplay('1')">C+</button>
-            <button onclick="appendToDisplay('2')">C</button>
-            <button onclick="appendToDisplay('3')">C-</button>
-            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
-            <button onclick="appendToDisplay('0')">D+</button>
-            <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="calculate()">=</button>
+            <button onclick="grader('A', 11, 4.0)">A</button>
+            <button onclick="grader('A-', 10, 3.67)">A-</button>
+            <button onclick="grader('4', 9, 3.33)">B+</button>
+            <button onclick="grader('4', 8, 3.0)">B</button>
+            <button onclick="grader('4', 7, 2.67)">B-</button>
+            <button onclick="grader('1', 6, 2.33)">C+</button>
+            <button onclick="grader('2', 5, 2.0)">C</button>
+            <button onclick="grader('3', 4, 1.67)">C-</button>
+            <button onclick="grader('0', 3, 1.33)">D+</button>
+            <button onclick="grader('.', 2, 1.0)">D</button>
+            <button onclick="grader('D-', 1, 0.67)">D-</button>
+            <button onclick="grader('F', 0, 0.0)">F</button>
+            <button onclick="storeData()" class="operator-btn">Next Class</button>
+            <button onclick="calculateGPA()" class="operator-btn">Calculate</button>
 
         </div>
     </div>
