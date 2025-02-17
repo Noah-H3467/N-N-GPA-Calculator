@@ -92,6 +92,22 @@ class Ready {
   }
 }
 
+const instructionText = document.querySelector("#instructionText");
+const gpaText = document.querySelector("#gpaText");
+
+// Main stuff
+let wGradePointList = []
+let gradePointList = []
+let creditsAggregation = 0;
+let courseGrade;
+let numCourses = 0;
+let courseCredits = 0.0;
+let courseWeight = null;
+let courseRaw = 0;
+let uGP;
+uGP = 0.0;
+
+
 function promptUser() {
   numCourses += 1;
   canMoveOn = new Ready(false, false, false);
@@ -157,16 +173,6 @@ function weighter(weight) {
 
 
 
-// Main stuff
-let wGradePointList = []
-let gradePointList = []
-let creditsAggregation = 0;
-let courseGrade;
-let numCourses = 0;
-let courseCredits = 0.0;
-let courseWeight = null;
-let courseRaw = 0;
-let uGP;
-uGP = 0.0;
+
 console.log("Welcome to the GPA Calculator with TKINTER.")
 promptUser()
