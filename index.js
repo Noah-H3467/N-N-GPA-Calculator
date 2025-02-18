@@ -93,7 +93,16 @@ class Ready {
 }
 
 const instructionText = document.querySelector("#instructionText");
-const gpaText = document.querySelector("#gpaText");
+const disp_Unweighted = document.querySelector("#gpaText");
+const disp_Weighted = document.querySelector("#wgpaText");
+const grades = document.querySelector("#gradesText");
+const weights = document.querySelector("#weightsText");
+const credits = document.querySelector("#creditsText");
+const instructions = document.querySelector("#instructionText");
+
+// Calculation variables
+let c_weighted;
+let c_unweighted;
 
 // Main stuff
 let wGradePointList = []
@@ -106,6 +115,7 @@ let courseWeight = null;
 let courseRaw = 0;
 let uGP;
 uGP = 0.0;
+let canMoveOn;
 
 
 function promptUser() {
@@ -117,7 +127,7 @@ function promptUser() {
   console.log("If you are done entering information for that course, press DONE to move on.");
   console.log("Or, if you finished entering all your classes, press CALCULATE GPA. ");
 }
-
+// TODO: Debug
 function calculateGPA() {
   if (canMoveOn.isReady()) {
     creditsAggregation += courseCredits;
@@ -147,32 +157,59 @@ function calculateGPA() {
     console.log();
     console.log("Your weighted GPA is " + wGPA);
     console.log("Your unweighted GPA is " + uGPA);
-    disp_Weighted.set(wGPA.toString());
-    disp_Unweighted.set(uGPA.toString());
+    disp_Weighted.innerHTML = wGPA;
+    disp_Unweighted.innerHTML = uGPA;
   }
 }
 
 function grader(gradeDisp, wGradeRaw, uGradePoint) {
-  grades.set(gradeDisp);
+  grades.innerHTML = gradeDisp;
   courseRaw = wGradeRaw;
   uGP = uGradePoint;
   canMoveOn.setGrade();
 }
 
 function crediter(credit) {
-  credits.set(credit);
+  credits.innerHTML = credit;
   courseCredits = credit;
   canMoveOn.setCredits();
 }
 
 function weighter(weight) {
-  weights.set(weight);
+  weights.innerHTML = weight;
   courseWeight = weight;
   canMoveOn.setWeight();
 }
 
-
-
+function storeData() {
+  // global canMoveOn
+  // global creditsAggregation
+  // global courseCredits
+  // global c_weighted
+  // global c_unweighted
+  // global gradePointList
+  // global wGradePointList
+  if (canMoveOn.isReady()) {
+    creditsAggregation += courseCredits;
+    c_weighted = new Weighted(courseRaw, courseCredits, courseWeight);
+    c_weighted.addWeight();
+    c_weighted.getGradePoint();
+    c_weighted.GPtimesCredits(courseCredits);
+    wGradePointList.push(c_weighted.gradePoint);
+    c_unweighted = new Unweighted(uGP, courseCredits);
+    c_unweighted.GPtimesCredits(courseCredits);
+    gradePointList.push(c_unweighted.gradePoint);
+    c_weighted = null;
+    c_unweighted = null;
+    canMoveOn = null;
+    weights.innerHTML = "";
+    credits.innerHTML = "";
+    grades.innerHTML = "";
+    promptUser();
+  } else {
+    console.log("You must click all required buttons before moving on.");
+  }
+}
 
 console.log("Welcome to the GPA Calculator with TKINTER.")
-promptUser()
+promptUser();

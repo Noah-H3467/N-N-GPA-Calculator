@@ -22,14 +22,14 @@
             <button onclick="grader('A+', 12, 4.0)">A+</button>
             <button onclick="grader('A', 11, 4.0)">A</button>
             <button onclick="grader('A-', 10, 3.67)">A-</button>
-            <button onclick="grader('4', 9, 3.33)">B+</button>
-            <button onclick="grader('4', 8, 3.0)">B</button>
-            <button onclick="grader('4', 7, 2.67)">B-</button>
-            <button onclick="grader('1', 6, 2.33)">C+</button>
-            <button onclick="grader('2', 5, 2.0)">C</button>
-            <button onclick="grader('3', 4, 1.67)">C-</button>
-            <button onclick="grader('0', 3, 1.33)">D+</button>
-            <button onclick="grader('.', 2, 1.0)">D</button>
+            <button onclick="grader('B+', 9, 3.33)">B+</button>
+            <button onclick="grader('B', 8, 3.0)">B</button>
+            <button onclick="grader('B-', 7, 2.67)">B-</button>
+            <button onclick="grader('C+', 6, 2.33)">C+</button>
+            <button onclick="grader('C', 5, 2.0)">C</button>
+            <button onclick="grader('C-', 4, 1.67)">C-</button>
+            <button onclick="grader('D+', 3, 1.33)">D+</button>
+            <button onclick="grader('D', 2, 1.0)">D</button>
             <button onclick="grader('D-', 1, 0.67)">D-</button>
             <button onclick="grader('F', 0, 0.0)">F</button>
             <button onclick="storeData()" class="operator-btn">Next Class</button>
@@ -45,8 +45,17 @@
     </div>
 
     <div>
+      <p id="gradesText"></p>
+      <p id="weightsText"></p>
+      <p id="creditsText"></p>
+    </div>
+
+    <div>
         <h3 id="gpaText">
             <!-- This section will become visible once calculate GPA is pressed. It will display the GPAs. -->
+        </h3>
+        <h3 id="wgpaText">
+
         </h3>
     </div>
     <script src="index.js"></script>
