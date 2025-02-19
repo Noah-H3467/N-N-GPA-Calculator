@@ -8,7 +8,12 @@
     <title>Main Page</title>
   </head>
   <body>
-    <h1>Welcome to the N+N GPA Calculator!</h1>
+    <h1>Welcome to the GPA Calculator with HTML!</h1>
+
+    <div>
+      <p id="instructionText"></p>
+    </div>
+
     <div id="calculator">
         <input id="display" readonly>
         <div id="keys">
@@ -39,12 +44,6 @@
     </div>
 
     <div>
-        <p id="instructionText">
-            This text will contain the feedback for the user
-        </p>
-    </div>
-
-    <div>
       <p id="gradesText"></p>
       <p id="weightsText"></p>
       <p id="creditsText"></p>
@@ -54,10 +53,9 @@
         <h3 id="gpaText">
             <!-- This section will become visible once calculate GPA is pressed. It will display the GPAs. -->
         </h3>
-        <h3 id="wgpaText">
-
-        </h3>
+        <h3 id="wgpaText"></h3>
     </div>
+    
     <script src="index.js"></script>
   </body>
 </html>
