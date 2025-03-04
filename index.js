@@ -195,16 +195,15 @@ function restart() {
     c_unweighted = null;
   }
   canMoveOn.reset();
-  weightsText.innerHTML = "";
-  creditsText.innerHTML = "";
-  gradesText.innerHTML = "";
+  weights.innerHTML = "";
+  credits.innerHTML = "";
+  grades.innerHTML = "";
   disp_Unweighted.innerHTML = "";
   disp_Weighted.innerHTML = "";
   display.innerHTML = "";
   wGradePointList = [];
   gradePointList = [];
   creditsAggregation = 0;
-  courseGrade;
   numCourses = 0;
   courseCredits = 0;
   courseWeight = "null";
@@ -219,7 +218,6 @@ const disp_Weighted = document.querySelector("#wgpaText");
 const grades = document.querySelector("#gradesText");
 const weights = document.querySelector("#weightsText");
 const credits = document.querySelector("#creditsText");
-const instructions = document.querySelector("#instructionText");
 const display = document.querySelector("#display");
 
 // Calculation variables
@@ -230,7 +228,6 @@ let c_unweighted;
 let wGradePointList = []
 let gradePointList = []
 let creditsAggregation = 0;
-let courseGrade;
 let numCourses = 0;
 let courseCredits = 0.0;
 let courseWeight = "null";
