@@ -132,8 +132,7 @@ function calculateGPA() {
     }
     let uGPA = uGradePointSum / creditsAggregation;
     uGPA = Math.round(uGPA * 100) / 100;
-    instructionText.innerHTML = "Your weighted GPA is " + wGPA + ".";
-    instructionText.innerHTML += " Your unweighted GPA is " + uGPA + ".";
+    instructionText.innerHTML = "";
     disp_Weighted.innerHTML = wGPA;
     disp_Unweighted.innerHTML = uGPA;
     display.innerHTML = "Weighted GPA: " + wGPA + ". Unweighted GPA: " + uGPA;
