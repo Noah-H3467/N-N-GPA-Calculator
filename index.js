@@ -136,6 +136,7 @@ function calculateGPA() {
     instructionText.innerHTML += " Your unweighted GPA is " + uGPA + ".";
     disp_Weighted.innerHTML = wGPA;
     disp_Unweighted.innerHTML = uGPA;
+    display.innerHTML = "Weighted GPA: " + wGPA + ". Unweighted GPA: " + uGPA;
   }
 }
 
@@ -188,6 +189,30 @@ function storeData() {
   }
 }
 
+function restart() {
+  if (canMoveOn.isCalculated) {
+    c_weighted = null;
+    c_unweighted = null;
+  }
+  canMoveOn.reset();
+  weightsText.innerHTML = "";
+  creditsText.innerHTML = "";
+  gradesText.innerHTML = "";
+  disp_Unweighted.innerHTML = "";
+  disp_Weighted.innerHTML = "";
+  display.innerHTML = "";
+  wGradePointList = [];
+  gradePointList = [];
+  creditsAggregation = 0;
+  courseGrade;
+  numCourses = 0;
+  courseCredits = 0;
+  courseWeight = "null";
+  courseRaw = 0;
+  uGP = 0.0;
+  promptUser();
+}
+
 const instructionText = document.querySelector("#instructionText");
 const disp_Unweighted = document.querySelector("#gpaText");
 const disp_Weighted = document.querySelector("#wgpaText");
@@ -195,6 +220,7 @@ const grades = document.querySelector("#gradesText");
 const weights = document.querySelector("#weightsText");
 const credits = document.querySelector("#creditsText");
 const instructions = document.querySelector("#instructionText");
+const display = document.querySelector("#display");
 
 // Calculation variables
 let c_weighted;
@@ -207,7 +233,7 @@ let creditsAggregation = 0;
 let courseGrade;
 let numCourses = 0;
 let courseCredits = 0.0;
-let courseWeight = null;
+let courseWeight = "null";
 let courseRaw = 0;
 let uGP;
 uGP = 0.0;

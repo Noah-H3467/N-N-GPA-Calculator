@@ -35,7 +35,7 @@ button{
     border: none;
     background-color: hsl(0, 0%, 30%);
     color:cyan;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
     cursor: pointer;
 }
