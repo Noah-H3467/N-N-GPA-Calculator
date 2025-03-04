@@ -84,3 +84,9 @@ button:active{
     text-align: center;
     margin-top: 20px;
 }
+.instructionText{
+    font-size: 1.5rem;
+    color: black;
+    text-align: left;
+    margin-top: 10px;
+}
