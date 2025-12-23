@@ -1,44 +1,61 @@
-#body{
+body{
     margin: 0;
     display: flex;
-    justify-content: center; /* horizontal alignment*/
+    justify-content: left; /* horizontal alignment*/
     align-items: center; /*vertical alignment */
     height: 100vh; /* 100% of viewport height */
     background-color: hsl(0, 0%, 95%)
 }
+#left{
+    width: 50%;
+    margin: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 #calculator{
     font-family: Arial, sans-serif;
     background-color:hsl(0, 0%, 15%);
     border-radius: 15px;
-    max-width: 1000px;
+    /* max-width: 420px; */
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     overflow: hidden;
+    margin: 2.5rem;
+    margin-left: 0rem;
 }
 #display{
-    width: 100%;
-    padding: 20px;
-    font-size: 2rem;
+    width: 94%;
+    padding: 18px 14px;
+    font-size: 1.8rem;
     text-align: left;
     border: none;
-    background-color:hsl(0, 0%, 20%);
-    color: white
+    background-color:hsl(0, 0%, 22%);
+    color: white;
+    border-radius: 7px;
 }
 #keys{
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* each of four columns should take an even amount of space */
-    gap: 10px;
-    padding: 25px;
+    grid-template-columns: repeat(6, minmax(64px, 1fr));
+    gap: 12px;
+    padding: 16px 0 0 0;
+    align-items: stretch;
 }
-button{
-    width: 200px;
-    height: 100px;
-    border-radius: 50px;
-    border: none;
-    background-color: hsl(0, 0%, 30%);
-    color:cyan;
-    font-size: 2.5rem;
-    font-weight: bold;
-    cursor: pointer;
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;         /* allow wrapping */
+    overflow-wrap: break-word;  /* break long words if needed */
+    word-wrap: break-word;      /* legacy support */
+    hyphens: auto;
+    text-align: center;
+    line-height: 1.1;
+    padding: 8px;
+    border-radius: 5px;
+  aspect-ratio: auto;         /* allow variable height for multiline text */
+  min-height: 100px;           /* keeps buttons comfortably tall */
 }
+
 button:hover{
     background-color: hsl(0, 0%, 40%)
 }
@@ -54,6 +71,46 @@ button:active{
 .operator-btn:active{
     background-color: hsl(35, 100%, 75%)
 }
+
+/* Button role color coding */
+.weight-btn{
+    background-color: hsl(170, 60%, 35%);
+    color: #fff;
+}
+.weight-btn:hover{ background-color: hsl(170, 60%, 45%); }
+
+.credit-btn{
+    background-color: hsl(270, 55%, 38%);
+    color: #fff;
+}
+.credit-btn:hover{ background-color: hsl(270, 55%, 48%); }
+
+.grade-btn{
+    background-color: hsl(210, 70%, 36%);
+    color: #fff;
+}
+.grade-btn:hover{ background-color: hsl(210, 70%, 46%); }
+
+.store-btn{
+    background-color: hsl(0, 0%, 45%);
+    color: #fff;
+}
+.store-btn:hover{ background-color: hsl(0,0%,55%); }
+
+.calculate-btn{ /* accent for calculate, keeps operator styling but stronger */
+    background-color: hsl(28, 90%, 50%);
+    color: #1a1a1a;
+}
+.calculate-btn:hover{ background-color: hsl(28, 90%, 60%); }
+
+.info-btn{
+    background-color: transparent;
+    color: #ddd;
+    border-radius: 6px;
+    height: 48px;
+    font-size: 0.9rem;
+}
+.info-btn:empty{ visibility: hidden; }
 .gradesText{
     font-size: 1.5rem;
     color: white;
@@ -89,4 +146,9 @@ button:active{
     color: black;
     text-align: left;
     margin-top: 10px;
+}
+
+/* Helpful utility classes for layout tweaks without editing HTML structure */
+.wide{ /* span two columns, useful for 0 or wide actions */
+    grid-column: span 2;
 }

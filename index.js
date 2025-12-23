@@ -101,13 +101,15 @@ class Ready {
 function promptUser() {
   numCourses += 1;
   instructionText.innerHTML = "Class #" + numCourses + ": ";
-  instructionText.innerHTML += " Use the buttons to enter the grade, number of credits, and Weight -'AP', 'Honors', 'Normal'- of your course.";
+  instructionText.innerHTML += " Use the buttons to the Weight -'AP', 'Honors', 'Normal'- of your course, number of credits, and letter grade.";
   instructionText.innerHTML += " If you are done entering information for that course, press DONE to move on.";
   instructionText.innerHTML += " Or, if you finished entering all your classes, press CALCULATE GPA. ";
+  userFeedback.innerHTML = "Your entries for this class: "
 }
-// TODO: Debug
+
 function calculateGPA() {
-  if (canMoveOn.isReady()) {
+  if (canMoveOn.isReady() && !calculated) {
+    userInput.innerHTML = "";
     creditsAggregation += courseCredits;
     let c_weighted = new Weighted(courseRaw, courseCredits, courseWeight);
     c_weighted.addWeight();
@@ -117,9 +119,6 @@ function calculateGPA() {
     let c_unweighted = new Unweighted(uGP, courseCredits);
     c_unweighted.GPtimesCredits(courseCredits);
     gradePointList.push(c_unweighted.gradePoint);
-    weights.innerHTML = "";
-    credits.innerHTML = "";
-    grades.innerHTML = "";
     let wGradePointSum = 0.0;
     let uGradePointSum = 0.0;
     for (let i = 0; i < wGradePointList.length; i++) {
@@ -133,40 +132,44 @@ function calculateGPA() {
     let uGPA = uGradePointSum / creditsAggregation;
     uGPA = Math.round(uGPA * 100) / 100;
     instructionText.innerHTML = "";
-    disp_Weighted.innerHTML = wGPA;
-    disp_Unweighted.innerHTML = uGPA;
     display.innerHTML = "Weighted GPA: " + wGPA + ". Unweighted GPA: " + uGPA;
+    instructionText.innerHTML = "GPA Calculated. ";
+    instructionText.innerHTML += "Weighted GPA: " + wGPA + ". Unweighted GPA: " + uGPA;
+    instructionText.innerHTML += "  Press Restart to start again.";
+    userFeedback.innerHTML = "";
+    calculated = true;
   }
 }
 
 function grader(gradeDisp, wGradeRaw, uGradePoint) {
-  grades.innerHTML = gradeDisp;
-  courseRaw = wGradeRaw;
-  uGP = uGradePoint;
-  canMoveOn.setGrade();
+  // Don't do anything with the grade, credit, or weight adder if the GPA is calculated 
+  // and the restart button has not been pressed
+  if (!calculated) {
+    userInput.innerHTML += "Grade: " + gradeDisp + "     ";
+    courseRaw = wGradeRaw;
+    uGP = uGradePoint;
+    canMoveOn.setGrade();
+  }
 }
 
 function crediter(credit) {
-  credits.innerHTML = credit;
-  courseCredits = credit;
-  canMoveOn.setCredits();
+  if (!calculated) {
+    userInput.innerHTML += "Credits: " + credit + "      ";
+    courseCredits = credit;
+    canMoveOn.setCredits();
+  }
 }
 
 function weighter(weight) {
-  weights.innerHTML = weight;
-  courseWeight = weight;
-  canMoveOn.setWeight();
+  if (!calculated) {
+    userInput.innerHTML += "Weight: " + weight + "      ";
+    courseWeight = weight;
+    canMoveOn.setWeight();
+  }
 }
 
 function storeData() {
-  // global canMoveOn
-  // global creditsAggregation
-  // global courseCredits
-  // global c_weighted
-  // global c_unweighted
-  // global gradePointList
-  // global wGradePointList
-  if (canMoveOn.isReady()) {
+  if (canMoveOn.isReady() && !calculated) {
     creditsAggregation += courseCredits;
     c_weighted = new Weighted(courseRaw, courseCredits, courseWeight);
     c_weighted.addWeight();
@@ -179,9 +182,7 @@ function storeData() {
     c_weighted = null;
     c_unweighted = null;
     canMoveOn.reset();
-    weights.innerHTML = "";
-    credits.innerHTML = "";
-    grades.innerHTML = "";
+    userInput.innerHTML = "";
     promptUser();
   } else {
     instructionText += " You must click all required buttons before moving on.";
@@ -194,11 +195,8 @@ function restart() {
     c_unweighted = null;
   }
   canMoveOn.reset();
-  weights.innerHTML = "";
-  credits.innerHTML = "";
-  grades.innerHTML = "";
-  disp_Unweighted.innerHTML = "";
-  disp_Weighted.innerHTML = "";
+  userInput.innerHTML = "";
+  userFeedback.innerHTML = "";
   display.innerHTML = "";
   wGradePointList = [];
   gradePointList = [];
@@ -208,15 +206,15 @@ function restart() {
   courseWeight = "null";
   courseRaw = 0;
   uGP = 0.0;
+  calculated = false;
   promptUser();
 }
 
 const instructionText = document.querySelector("#instructionText");
-const disp_Unweighted = document.querySelector("#gpaText");
-const disp_Weighted = document.querySelector("#wgpaText");
-const grades = document.querySelector("#gradesText");
-const weights = document.querySelector("#weightsText");
-const credits = document.querySelector("#creditsText");
+const userInput = document.querySelector("#userInput");
+userInput.innerHTML = "";
+const userFeedback = document.querySelector("#userFeedback");
+userFeedback.textContent = "";
 const display = document.querySelector("#display");
 
 // Calculation variables
@@ -234,5 +232,6 @@ let courseRaw = 0;
 let uGP;
 uGP = 0.0;
 let canMoveOn = new Ready(false, false, false)
+let calculated = false;
 
 promptUser();

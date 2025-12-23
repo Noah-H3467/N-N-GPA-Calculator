@@ -8,48 +8,53 @@
     <title>Main Page</title>
   </head>
   <body>
-    <h1>Welcome to the GPA Calculator with HTML!</h1>
 
-    <div>
-      <p id="instructionText"></p>
+    <div id="left">
+      <h1>Welcome to the N+N Web-Based GPA Calculator!</h1>
+      <div>
+        <h3>Instructions</h3>
+        <p id="instructionText"></p>
+        <h3 id = "userFeedback"></h3>
+        <p id="userInput"></p>
+        <p>Note: When dealing with conflicting entries in a single class, reference the most recent.</p>
+      </div>
     </div>
 
     <div id="calculator">
         <h2 id="display"></h2>
         <div id="keys">
-            <button onclick="weighter('Normal')" class = "weight-btn">Regular</button>
-            <button onclick="weighter('Honors')" class="weight-btn">Honors</button>
-            <button onclick="weighter('AP')" class="weight-btn">AP</button>
-            <button onclick="storeData()" class="operator-btn">Next Class</button>
 
-            <button onclick="crediter(0.5)" class="credit-btn">0.5 Credits</button>
-            <button onclick="crediter(1)" class="credit-btn">1 Credit</button>
-            <button onclick="crediter(2)" class="credit-btn">2 Credits</button>
-            <button onclick="calculateGPA()" class="operator-btn">Calculate</button>
+          <!-- Weight selectors -->
+          <button onclick="weighter('Normal')" class="weight-btn">Regular</button>
+          <button onclick="weighter('Honors')" class="weight-btn">Honors</button>
+          <button onclick="weighter('AP')" class="weight-btn">AP</button>
 
-            <button onclick="grader('A+', 12, 4.0)">A+</button>
-            <button onclick="grader('A', 11, 4.0)">A</button>
-            <button onclick="grader('A-', 10, 3.67)">A-</button>
-            <button onclick="restart()" class="operator-btn">Restart</button>
+          <!-- Credit selectors -->
+          <button onclick="crediter(0.5)" class="credit-btn">0.5</button>
+          <button onclick="crediter(1)" class="credit-btn">1.0</button>
+          <button onclick="crediter(2)" class="credit-btn">2.0</button>
 
-            <button onclick="grader('B+', 9, 3.33)">B+</button>
-            <button onclick="grader('B', 8, 3.0)">B</button>
-            <button onclick="grader('B-', 7, 2.67)">B-</button>
-            <button id="gpaText"></button>
-            
-            <button onclick="grader('C+', 6, 2.33)">C+</button>
-            <button onclick="grader('C', 5, 2.0)">C</button>
-            <button onclick="grader('C-', 4, 1.67)">C-</button>
-            <button id="wgpaText"></button>
+          <!-- Grade grid (A -> F) -->
+          <button onclick="grader('A+', 12, 4.0)" class="grade-btn">A+</button>
+          <button onclick="grader('A', 11, 4.0)" class="grade-btn">A</button>
+          <button onclick="grader('A-', 10, 3.67)" class="grade-btn">A-</button>
 
-            <button onclick="grader('D+', 3, 1.33)">D+</button>
-            <button onclick="grader('D', 2, 1.0)">D</button>
-            <button onclick="grader('D-', 1, 0.67)">D-</button>
-            <button onclick="grader('F', 0, 0.0)">F</button>
+          <button onclick="grader('B+', 9, 3.33)" class="grade-btn">B+</button>
+          <button onclick="grader('B', 8, 3.0)" class="grade-btn">B</button>
+          <button onclick="grader('B-', 7, 2.67)" class="grade-btn">B-</button>
 
-            <button id="gradesText"></button>
-            <button id="weightsText"></button>
-            <button id="creditsText"></button>
+          <button onclick="grader('C+', 6, 2.33)" class="grade-btn">C+</button>
+          <button onclick="grader('C', 5, 2.0)" class="grade-btn">C</button>
+          <button onclick="grader('C-', 4, 1.67)" class="grade-btn">C-</button>
+
+          <button onclick="grader('D+', 3, 1.33)" class="grade-btn">D+</button>
+          <button onclick="grader('D', 2, 1.0)" class="grade-btn">D</button>
+          <button onclick="grader('D-', 1, 0.67)" class="grade-btn">D-</button>
+
+          <button onclick="storeData()" class="store-btn small">Next Class</button>
+          <button onclick="calculateGPA()" class="operator-btn calculate-btn">Calculate</button>
+          <button onclick="restart()" class="operator-btn">Restart</button>
+          <button onclick="grader('F', 0, 0.0)" class="grade-btn">F</button>
         </div>
     </div>
 
